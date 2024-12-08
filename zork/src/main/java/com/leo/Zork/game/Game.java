@@ -8,8 +8,11 @@ import java.util.Scanner;
  */
 public class Game {
 
+    private Inventory inventory;
+
     public Game() {
         System.out.println("Game instance created");
+        inventory = new Inventory(5);
     }
 
     public void initialize() {
@@ -96,6 +99,7 @@ public class Game {
             System.out.println("Take what?");
         } else {
             System.out.println("You take the " + arguments + ".");
+            inventory.addItem(arguments);
         }
     }
 
@@ -104,13 +108,12 @@ public class Game {
             System.out.println("Drop what?");
         } else {
             System.out.println("You drop the " + arguments + ".");
+            inventory.removeItem(arguments);
         }
     }
 
     private void showInventory() {
-        System.out.println("You are carrying:");
-        System.out.println("- A rusty sword");
-        System.out.println("- A torch");
+        inventory.displayInventory();
     }
 
     private void showHelp() {
